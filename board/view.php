@@ -6,7 +6,7 @@
 
     <?php
 
-    $mysqli = mysqli_connect("localhost","root","1234","podo");
+    $mysqli = mysqli_connect("127.0.0.1","root","1234","podo");
 
     if ($mysqli -> connect_errno) {
     echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
@@ -26,8 +26,11 @@
     <div>
       <?= $row['message'] ?>
     </div>
-    <?php    }    ?>
+    <?php    }
+        mysqli_close($mysqli);
+    ?>
     <p><a href="index.php">메인화면으로 돌아가기</a></p>
+    <p><a href="update.php?number=<?= $row['number'] ?>">글 수정</a></p>
 <?php
     include $_SERVER['DOCUMENT_ROOT']."/inc/footer.php"
 ?>

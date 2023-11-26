@@ -24,8 +24,8 @@
     // echo / print () : 값을 그대로 출력
     // print_r () : 배열, 객체 모양을 그대로 출력
     // var_dump : print_r 보다 상세하게 출력
-    while($row = mysqli_fetch_array($result)){
-        $list = $list."<li>{$row['number']}: <a href=\"view.php?number={$row['number']}\">{$row['name']}</a>&nbsp;&nbsp;{$row['message']}</li>";
+    while($row = mysqli_fetch_array($result)){ //결과를 배열의 형식으로 저장한 것에서
+        $list = $list."<li>{$row['number']}: <a href=\"view.php?number={$row['number']}\">{$row['name']}</a>&nbsp;&nbsp;{$row['message']}</li>"; //저장된 값 중 {$row['xx']} xx에 해당하는 값을 출력
     }
     echo $list;
     ?>

@@ -11,7 +11,7 @@
 		$name = "alikerock";
 		echo '반갑습니다. '.  $name;
         echo '<hr>';
-		echo "반갑습니다.  $name";
+		echo "반갑aaa습니다.  $name";
 	?>
 </body>
 </html>
