@@ -1,5 +1,5 @@
 <?php
-    $title = '회원가입';
+    $title = '로그인';
     // include('inc/header.php');
     include $_SERVER['DOCUMENT_ROOT']."/inc/header.php"
 ?>
@@ -33,8 +33,8 @@
 			} else {
 		?>
 
-		<header>Sign Up</header>
-		<form action="register_server.php" method="post">
+		<header>Sign In</header>
+		<form action="login_server.php" method="post">
 
 			<!-- 에러메시지 -->
 			<?php if(isset($_GET['error'])){ ?>
@@ -51,26 +51,14 @@
 				<input type="text" name="UserID" id="UserID" autocomplete="off" required>
 			</div>
 			<div class="field input">
-				<label for="UserNick">UserNick</label>
-				<input type="text" name="UserNick" id="UserNick" autocomplete="off" required>
-			</div>
-			<div class="field input">
-				<label for="Email">Email</label>
-				<input type="text" name="Email" id="Email" autocomplete="off" required>
-			</div>
-			<div class="field input">
 				<label for="Password">Password</label>
 				<input type="Password" name="Password" id="Password" autocomplete="off" required>
 			</div>
-			<div class="field input">
-				<label for="Passwordc">Passwordc</label>
-				<input type="Passwordc" name="Passwordc" id="Passwordc" autocomplete="off" required>
-			</div>
 			<div class="field">
-				<input type="submit" class="btn" name="submit" value="Register" required>
+				<input type="submit" class="btn" name="submit" value="Login" required>
 			</div>
 			<div class="link">
-				Already a member? <a href="login.php">Sign In</a>
+				Not a member yet? <a href="register.php">Sign Up</a>
 			</div>
 		</form>
 	</div>

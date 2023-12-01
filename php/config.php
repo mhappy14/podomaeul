@@ -1,4 +1,7 @@
 <?php
-    $con = new mysqli("localhost:3306", "root", "1234", "podo") or die("Couldn't connect");
+    $con = mysqli_connect("localhost", "root", "1234", "podo");
 
+    if(!$con){
+        echo "Fail to connect database";
+    } 
 ?>

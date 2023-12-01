@@ -66,7 +66,7 @@ body{
 
 .btn{
     height: 35px;
-    background: rgba(9, 87, 222, 0.808);
+    background: #6a2f66;
     border: 0;
     border-radius: 5px;
     color: #fff;
@@ -93,6 +93,7 @@ body{
 /***home***/
 
 .nav{
+    position: sticky;
     background: #fff;
     display: flex;
     flex-direction: row;
@@ -110,6 +111,32 @@ body{
 }
 
 .logo a{
+    text-decoration: none;
+    color: #000;
+    justify-content: space-around;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    font-size: 15px;
+    margin: 0 10px;
+    font-weight: 200;
+    text-decoration: none;
+    border: 3px
+}
+
+.menu1 a{
+    text-decoration: none;
+    color: #231022;
+    font-weight: 400;
+    margin: 0 10px;
+    border-radius: 6px;
+}
+
+.right-links {
+    font-size: 15px;
+    font-weight: 900;
     text-decoration: none;
     color: #000;
 }

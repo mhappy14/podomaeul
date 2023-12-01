@@ -1,9 +1,6 @@
 <?php
 	SESSION_START();
 	include("php/config.php");
-	if(!isset($_SESSION['valid'])){
-		header("Location: index.php");
-	}
 ?>
 
 <?php
@@ -16,23 +13,18 @@
 	<div class="logo">
 		<p><a href="home.php">포도마을</a></p>
 	</div>
+	<div class="menu">
+		<div class="menu1">
+			<p><a href="home.php">자격증공부</a></p>
+		</div>
+		<div class="menu1">
+			<p><a href="home.php">영어공부</a></p>
+		</div>
+		<div class="menu1">
+			<p><a href="home.php">웹개발</a></p>
+		</div>
+	</div>
 	<div class="right-links">
-
-		<?php
-		$id = $_SESSION["id"];
-        $result = mysqli_query($con, "SELECT * FROM users WHERE Id=$id");
-		$row = mysqli_fetch_assoc($result);
-		print_r($row);
-			$res_Uname = $result['Username'];
-			$res_Email = $result['Email'];
-			$res_Age = $result['Age'];
-			$res_id = $result['Id'];
-		
-		
-		echo "<a href='edit.php?Id=$res_id'><Change Profile</a>";
-		?>
-
-
 		<a href="edit.php">프로필수정</a>
 		<a href="logout.php"><button class="btn">Logout</button></a>
 	</div>
@@ -42,15 +34,60 @@
 	<div class="main-box top"> <!-- 단축키 div.main-box.top>  -->
 		<div class="top">
 			<div class="box">
-				<p>Hello <b><?php echo $res_Uname ?></b></p>
+				<p>Hello <b><?php echo $_SESSION['UserNick']; ?></b></p>
 			</div>
 			<div class="box">
-				<p>Your email is <b><?php echo $res_Email ?></b></p>
+				<p>Your email is <b><?php echo 'ㅇㅇㅇ입니다' ?></b></p>
 			</div>
 		</div>
 		<div class="bottom">
 			<div class="box">
-				<p>And you are <b><?php echo $res_Age ?></b>.</p>
+				<p>And you are <b><?php echo 'ㅇㅇ살입니다' ?></b>.</p>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="box">
+				<p>And you are <b><?php echo 'ㅇㅇ살입니다' ?></b>.</p>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="box">
+				<p>And you are <b><?php echo 'ㅇㅇ살입니다' ?></b>.</p>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="box">
+				<p>And you are <b><?php echo 'ㅇㅇ살입니다' ?></b>.</p>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="box">
+				<p>And you are <b><?php echo 'ㅇㅇ살입니다' ?></b>.</p>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="box">
+				<p>And you are <b><?php echo 'ㅇㅇ살입니다' ?></b>.</p>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="box">
+				<p>And you are <b><?php echo 'ㅇㅇ살입니다' ?></b>.</p>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="box">
+				<p>And you are <b><?php echo 'ㅇㅇ살입니다' ?></b>.</p>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="box">
+				<p>And you are <b><?php echo 'ㅇㅇ살입니다' ?></b>.</p>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="box">
+				<p>And you are <b><?php echo 'ㅇㅇ살입니다' ?></b>.</p>
 			</div>
 		</div>
  	</div>
