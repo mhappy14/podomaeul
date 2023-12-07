@@ -30,7 +30,7 @@
       </a>
 
       <ul class="nav nav-pills gap-3">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="home.php" class="nav-link active" aria-current="page">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link">소개</a></li>
         <li class="nav-item"><a href="#" class="nav-link">게시판</a></li>
         <li class="nav-item"><a href="#" class="nav-link active">로그인</a></li>
