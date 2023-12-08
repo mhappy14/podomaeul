@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     //아이디 중복확인
-    const btn_id_check = document.querySelector("#btn_id_check")
+    const btn_id_check = document.querySelector("#btn_id_check") //아이디는 #태그 붙임
     
     btn_id_check.addEventListener("click", () => {
         const f_id = document.querySelector("#f_id")
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //가입버튼 클릭 후
     const btn_submit = document.querySelector("#btn_submit")
     btn_submit.addEventListener("click",() => {
-        const f = document.input_form
+        const f = document.input_form  //form태크 안으로 범위 한정
         if (f.id.value == '') {
             alert('아이디 입력바람')
             f.id.focus()
@@ -109,6 +109,36 @@ document.addEventListener("DOMContentLoaded", () => {
             f.password.focus()
             return false
         }
+        //이메일 입력여부 확인
+        if (f.email.value != '') {
+            alert('이메일 입력 바람')
+            f.email.focus()
+            return false
+        }
+        //이메일 중복여부 체크 확인
+        if (f.email_chk.value == 0) {
+            alert('이메일 중복확인 바람')
+            return false
+        }
+        //우편번호 입력여부 확인
+        if (f.zipcode.value != '') {
+            alert('우편번호 입력 바람')
+            return false
+        }
+        //주소 입력여부 확인
+        if (f.addr1.value != '') {
+            alert('주소 입력 바람')
+            f.addr1.focus()
+            return false
+        }
+        //상세주소 입력여부 확인
+        if (f.addr2.value != '') {
+            alert('상세주소 입력 바람')
+            f.addr2.focus()
+            return false
+        }
+
+        f.submit()
     })
 
     //우편번호
@@ -151,6 +181,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 f_addr2.focus()
             }
         }).open();
+    })
+
+    const f_photo = document.querySelector("#f_photo") //아이디는 #태그 붙임
+    f_photo.addEventListener("change", (e) => {
+        const reader = new FileReader()
+        reader.readAsDataURL(e.target.files[0])
+        reader.onload = function(event) {
+            // const img = document.createElement("img")
+            // img.setAttribute("src", event.target.result)
+            // document.querySelector("#f_preview").appendChild(img)
+            const f_preview = document.querySelector("#f_preview")
+            f_preview.setAttribute("src", event.target.result)
+        }
     })
 
 })

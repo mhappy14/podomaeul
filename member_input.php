@@ -48,7 +48,7 @@ if(!isset($_POST['chk']) or $_POST['chk'] !=1) {
     <div class="mt-3 d-flex gap-3 align-items-end">
         <div class="flex-grow-1">
             <label for="f_zipcode">우편번호</label>
-            <input type="text" name="zipcode" id="f_zipcode"  class="form-control" maxlength="5" minlength="5">
+            <input type="text" name="zipcode" id="f_zipcode" readonly class="form-control" maxlength="5" minlength="5">
         </div>
         <button type="button" class="btn btn-secondary" id="btn_zipcode">우편번호 찾기</button>
     </div>
@@ -56,20 +56,20 @@ if(!isset($_POST['chk']) or $_POST['chk'] !=1) {
     <div class="mt-3 d-flex gap-3 align-items-end">
         <div class="flex-grow-1">
             <label for="f_addr1">주소</label>
-            <input type="text" name="zipcode" id="f_addr1"  class="form-control" maxlength="5" minlength="5">
+            <input type="text" name="addr1" id="f_addr1"  class="form-control" maxlength="5" minlength="5">
         </div>
         <div class="flex-grow-1">
             <label for="f_addr2">상세주소</label>
-            <input type="text" name="zipcode" id="f_addr2"  class="form-control" maxlength="5" minlength="5">
+            <input type="text" name="addr2" id="f_addr2"  class="form-control" maxlength="5" minlength="5">
         </div>
     </div>
 
     <div class="mt-3 d-flex gap-3 justify-content-between">
         <div>
             <label for="f_photo" class="form-label">프로필 이미지</label>
-            <input type="file" name="photo" class="form-control">
+            <input type="file" name="photo" id="f_photo" class="form-control">
         </div>
-        <img src="" class="w-25"alt="profile image">
+        <img src="" class="w-25" id="f_preview" alt="profile image">
     </div>
 
     <div class="mt-3 d-flex gap-2">
