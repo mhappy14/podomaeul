@@ -109,8 +109,14 @@ document.addEventListener("DOMContentLoaded", () => {
             f.password.focus()
             return false
         }
+        //이름 입력여부 확인
+        if (f.name.value == '') {
+            alert('이름(닉네임) 입력바람')
+            f.name.focus()
+            return false
+        }
         //이메일 입력여부 확인
-        if (f.email.value != '') {
+        if (f.email.value == '') {
             alert('이메일 입력 바람')
             f.email.focus()
             return false
@@ -121,18 +127,18 @@ document.addEventListener("DOMContentLoaded", () => {
             return false
         }
         //우편번호 입력여부 확인
-        if (f.zipcode.value != '') {
+        if (f.zipcode.value == '') {
             alert('우편번호 입력 바람')
             return false
         }
         //주소 입력여부 확인
-        if (f.addr1.value != '') {
+        if (f.addr1.value == '') {
             alert('주소 입력 바람')
             f.addr1.focus()
             return false
         }
         //상세주소 입력여부 확인
-        if (f.addr2.value != '') {
+        if (f.addr2.value == '') {
             alert('상세주소 입력 바람')
             f.addr2.focus()
             return false

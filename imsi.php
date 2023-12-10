@@ -1,12 +1,9 @@
 <?php
-    include 'inc/dbconfig.php';
-    include 'inc/member.php';
+    $_FILES['photo']['name'] = '2.jpg';
 
-    $id = 'aa';
-    $mem = new Member($con);
-    
-    if ($mem-> id_exists($id)) {
-        echo "아이디 중복";
-    } else {
-        echo "사용이 가능한 아이디입니다.";
-    }
+    $id = 'zzz';
+    $arr = explode('.', $_FILES['photo']['name']);
+    $ext = end($arr);
+    $photo = $id.'.'.$ext;
+
+    echo $photo;

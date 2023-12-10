@@ -25,7 +25,7 @@ if(!isset($_POST['chk']) or $_POST['chk'] !=1) {
             <input type="email" class="form-control" name="id" id="f_id" placeholder="아이디 입력창">
         </div>
         <button type="button" class="btn btn-secondary" id="btn_id_check">아이디 중복확인</button>
-    </div>
+    </div>        
     
     <div class="form-group mt-3 d-flex gap-3 justify-content-between">
         <div class="flex-grow-1">
@@ -35,6 +35,13 @@ if(!isset($_POST['chk']) or $_POST['chk'] !=1) {
         <div class="flex-grow-1">
             <label for="f_pw2" class="form-label">비밀번호 확인</label>
             <input type="password2" name="password2" class="form-control" id="f_pw2" placeholder="비밀번호 확인">
+        </div>
+    </div>
+
+    <div class="form-group mt-3 d-flex gap-3 align-items-end">
+        <div class="flex-grow-1">
+            <label for="f_name" class="form-label">이름(닉네임)</label>
+            <input type="email" class="form-control" name="name" id="f_name" placeholder="이름(닉네임) 입력창">
         </div>
     </div>
     
