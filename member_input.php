@@ -1,5 +1,6 @@
 <?php 
     $js_array = ['js/member_input.js'];
+    $title = '회원가입';
     include 'inc/header.php';
 ?>
 <?php

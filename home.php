@@ -1,5 +1,6 @@
 <?php 
     $js_array = ['js/member_input.js'];
+    $title = '포도마을';
     include 'inc/header.php';
 ?>
 <?php
