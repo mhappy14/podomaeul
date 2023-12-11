@@ -1,6 +1,7 @@
 <?php 
   $js_array = [ 'js/member.js' ];
   $title = '약관';
+  $menu_code = 'stipulation';
   include 'inc/header.php';
  
 ?>

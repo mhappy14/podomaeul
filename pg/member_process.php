@@ -31,6 +31,11 @@ if ($mode == 'id_chk') {
     if($email == '') {
         die(json_encode(['result' => 'empty_email']));
     }
+
+    //이메일 형식체크
+    if($mem->email_format_check($email) === false) {
+        die(json_encode(['result' => 'email_format_wrong']));
+    }
     if($mem -> email_exists($email)) {
         die(json_encode(['result' => 'fail']));
     } else {
@@ -40,10 +45,13 @@ if ($mode == 'id_chk') {
 
 } else if ($mode == 'input') {
     //프로필 이미지 업로드
-    $tmparr = explode('.', $_FILES['photo']['name']);
-    $ext = end($tmparr);
-    $photo = $id.'.'.$ext;
-    copy($_FILES['photo']['tmp_name'],"../data/profile/". $photo); // ../ →부모폴더, ./ →현재 폴더
+    $photo = '';
+    if(isset($_FILES['photo']) && $_FILES['photo']['name'] != '') {
+        $tmparr = explode('.', $_FILES['photo']['name']);
+        $ext = end($tmparr);
+        $photo = $id.'.'.$ext;
+        copy($_FILES['photo']['tmp_name'],"../data/profile/". $photo); // ../ →부모폴더, ./ →현재 폴더
+    }
     $arr = [
         'id' => $id,
         'password' => $password,
@@ -56,4 +64,46 @@ if ($mode == 'id_chk') {
     ];
 
     $mem -> input($arr);
+
+    echo "
+    <script>
+        self.location.href='../member_success.php'
+    </script>
+    ";
+} else if($mode == 'edit') {
+    //프로필 이미지 업로드
+    $old_photo = (isset($_POST['old_photo']) && $_POST['old_photo'] != '') ? $_POST['old_photo'] : '';
+    if(isset($_FILES['photo']) && $_FILES['photo']['name'] != '') {
+        if($old_photo != '') {
+            unlink("../data/profile/". $old_photo);
+        }
+        $tmparr = explode('.', $_FILES['photo']['name']);
+        $ext = end($tmparr);
+        $photo = $id.'.'.$ext;
+        copy($_FILES['photo']['tmp_name'],"../data/profile/". $photo);
+        $old_photo = $photo;
+    }
+
+    session_start();
+
+
+    $arr = [
+        'id' => $_SESSION['ses_id'],
+        'password' => $password,
+        'name' => $name,
+        'email' => $email,
+        'zipcode' => $zipcode,
+        'addr1' => $addr1,
+        'addr2' => $addr2,
+        'photo' => $old_photo
+    ];
+
+    $mem -> edit($arr);
+
+    echo "
+    <script>
+        alert('수정 완료');
+        self.location.href='../index.php'
+    </script>
+    ";
 }

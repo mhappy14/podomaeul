@@ -1,41 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    //아이디 중복확인
-    const btn_id_check = document.querySelector("#btn_id_check") //아이디는 #태그 붙임
-    
-    btn_id_check.addEventListener("click", () => {
-        const f_id = document.querySelector("#f_id")
-        if(f_id.value == '') {
-            alert('아이디를 입력하세요')
-            return false
-        }
-
-        //AJAX
-        const f1 = new FormData()
-        f1.append('id',f_id.value)
-        f1.append('mode','id_chk')
-
-        const xhr = new XMLHttpRequest()
-        xhr.open("POST", "./pg/member_process.php", "true")
-        xhr.send(f1)
-
-        xhr.onload = () => {
-            if(xhr.status == 200) {
-                const data = JSON.parse(xhr.responseText)
-                if(data.result == 'success') {
-                    alert('사용 가능');
-                    document.input_form.id_chk.value = "1"
-                } else if (data.result == 'fail') {
-                    document.input_form.id_chk.value = "0"
-                    alert('사용 중인 아이디');
-                    f_id.value = ''
-                    f_id.focus()
-                } else if(data.result == 'empty_id') {
-                    alert('아이디 미입력')
-                    f_id.focus()
-                }
-            }
-        }
-    })
 
     //이메일 중복확인
     const btn_email_check = document.querySelector("#btn_email_check")
@@ -44,6 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const f_email = document.querySelector("#f_email")
         if(f_email.value == '') {
             alert('이메일를 입력하세요')
+            return false
+        }
+
+        if(document.input_form.old_email.value == f_email.value) {
+            alert('동일한 이메일')
             return false
         }
 
@@ -83,25 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn_submit = document.querySelector("#btn_submit")
     btn_submit.addEventListener("click",() => {
         const f = document.input_form  //form태크 안으로 범위 한정
-        if (f.id.value == '') {
-            alert('아이디 입력바람')
-            f.id.focus()
-            return false
-        }
-        //아이디 중복확인
-        if (f.id_chk.value == 0) {
-            alert('아이디 중복확인 바람')
-            return false
-        }
         //비번 확인
-        if (f.password.value == '') {
-            alert('비밀번호 입력바람')
-            f.password.focus()
-            return false
-        }
-        //비번2 확인
-        if (f.password2.value == '') {
-            alert('비밀번호 입력바람')
+        if (f.password.value != '' && f.password2.value == '') {
+            alert('비밀번호 확인 입력바람')
             f.password2.focus()
             return false
         }
@@ -126,9 +78,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return false
         }
         //이메일 중복여부 체크 확인
-        if (f.email_chk.value == 0) {
-            alert('이메일 중복확인 바람')
-            return false
+        if(f.old_email.value != f.email.value) {
+            if (f.email_chk.value == 0) {
+                alert('이메일 중복확인 바람')
+                return false
+            }
         }
         //우편번호 입력여부 확인
         if (f.zipcode.value == '') {
