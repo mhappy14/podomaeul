@@ -117,5 +117,32 @@ class Member {
         $stmt -> execute($params);
         
     }
+
+    //admin/member.php에서 회원목록 불러오는 함수 정의
+    public function list($page, $limit) {
+        // $sql = "SELECT * FROM users ORDER BY idx DESC";
+        $start = ($page - 1) * $limit;
+        $sql = "SELECT idx, id, name, email, 
+                       DATE_FORMAT(create_at, '%y-%m-%d %H:%i') AS create_at, 
+                       DATE_FORMAT(login_dt, '%y-%m-%d %H:%i') AS login_dt 
+                FROM users 
+                ORDER BY idx DESC
+                LIMIT ".$start.",". $limit;
+                //ORDER 부분 : ASC는 오름차순, DESC 는 내림차순
+                //LIMIT 부분 : 1페이지는 0부터 5개, 2페이지는 5부터 5개, 3페이지는 10부터 5개
+        $stmt = $this -> conn ->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC); //FETCH_NEM : 숫자만 가져옴, ASSOC는 값만
+        $stmt->execute();
+        return $stmt -> fetchAll();
+    }
+
+    public function total() {
+        $sql = "SELECT COUNT(*) cnt FROM users";
+        $stmt = $this -> conn ->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $row = $stmt -> fetch();
+        return $row['cnt'];
+    }
 }
 ?>

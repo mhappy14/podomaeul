@@ -32,9 +32,9 @@
         <?php if(isset($ses_id) && $ses_id != '') {
           //로그인 상태
         ?>
-          <li class="nav-item"><a href="index.php" class="nav-link <?= ($menu_code == '') ? 'active': ''; ?>" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="index.php" class="nav-link <?= ($menu_code == 'index') ? 'active': ''; ?>">Home</a></li>
           <li class="nav-item"><a href="intro.php" class="nav-link <?= ($menu_code == 'intro') ? 'active': ''; ?>">소개</a></li>
-          <?php if($ses_level ==10) {
+          <?php if($ses_level == 10) {
           ?>
           <li class="nav-item"><a href="./admin/" class="nav-link <?= ($menu_code == 'login') ? 'active': ''; ?>">Admin</a></li>
           <?php
@@ -50,7 +50,7 @@
         } else {
           //미로그인 상태
         ?>
-          <li class="nav-item"><a href="index.php" class="nav-link <?= ($menu_code == '') ? 'active': ''; ?>" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="index.php" class="nav-link <?= ($menu_code == 'index') ? 'active': ''; ?>">Home</a></li>
           <li class="nav-item"><a href="intro.php" class="nav-link <?= ($menu_code == 'intro') ? 'active': ''; ?>">소개</a></li>
           <li class="nav-item"><a href="board.php" class="nav-link <?= ($menu_code == 'board') ? 'active': ''; ?>">게시판</a></li>
           <li class="nav-item"><a href="stipulation.php" class="nav-link <?= ($menu_code == 'stipulation') ? 'active': ''; ?>">회원가입</a></li>

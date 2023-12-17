@@ -33,7 +33,7 @@ if(!isset($_POST['chk']) or $_POST['chk'] !=1) {
         </div>
         <div class="flex-grow-1">
             <label for="f_pw2" class="form-label">비밀번호 확인</label>
-            <input type="password2" name="password2" class="form-control" id="f_pw2" placeholder="비밀번호 확인">
+            <input type="password" name="password2" class="form-control" id="f_pw2" placeholder="비밀번호 확인">
         </div>
     </div>
 
