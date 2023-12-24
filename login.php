@@ -8,7 +8,7 @@
 
 <main class="w-75 mx-auto border rounded-5 p-5 d-flex gap-5" style="height:calc(100vh-257px)">
 
-<form method="post" class="w-25 mt-5 m-auto" action="">
+<form method="post" class="w-50 mt-5 m-auto" action="">
     <img src="./images/logo.svg" width="72" alt="">
     <h1 class="h3 bm-3">로그인</h1>
         <div class="form-floating mt-2">

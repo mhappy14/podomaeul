@@ -13,6 +13,8 @@ $zipcode = (isset($_POST['zipcode']) && $_POST['zipcode'] !='') ? $_POST['zipcod
 $addr1 = (isset($_POST['addr1']) && $_POST['addr1'] !='') ? $_POST['addr1'] : '';
 $addr2 = (isset($_POST['addr2']) && $_POST['addr2'] !='') ? $_POST['addr2'] : '';
 $photo = (isset($_POST['photo']) && $_POST['photo'] !='') ? $_POST['photo'] : '';
+$old_photo = (isset($_POST['old_photo']) && $_POST['old_photo'] != '') ? $_POST['old_photo'] : '';
+
 $mode = (isset($_POST['mode']) && $_POST['mode'] !='') ? $_POST['mode'] : '';
 
 //아이디 중복확인
@@ -26,6 +28,7 @@ if ($mode == 'id_chk') {
     } else {
         die(json_encode(['result' => 'success']));
     }
+
 //이메일 중복확인
 } else if ($mode == 'email_chk') {
     if($email == '') {
@@ -41,7 +44,6 @@ if ($mode == 'id_chk') {
     } else {
         die(json_encode(['result' => 'success']));
     }
-
 
 } else if ($mode == 'input') {
     //프로필 이미지 업로드
@@ -72,20 +74,12 @@ if ($mode == 'id_chk') {
     ";
 } else if($mode == 'edit') {
     //프로필 이미지 업로드
-    $old_photo = (isset($_POST['old_photo']) && $_POST['old_photo'] != '') ? $_POST['old_photo'] : '';
     if(isset($_FILES['photo']) && $_FILES['photo']['name'] != '') {
-        if($old_photo != '') {
-            unlink("../data/profile/". $old_photo);
-        }
-        $tmparr = explode('.', $_FILES['photo']['name']);
-        $ext = end($tmparr);
-        $photo = $id.'.'.$ext;
-        copy($_FILES['photo']['tmp_name'],"../data/profile/". $photo);
-        $old_photo = $photo;
+        $new_photo = $_FILES['photo'];
+        $old_photo = $mem->profile_upload($id, $new_photo, $old_photo);
     }
 
     session_start();
-
 
     $arr = [
         'id' => $_SESSION['ses_id'],

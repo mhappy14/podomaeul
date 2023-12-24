@@ -7,16 +7,18 @@
     include '../inc/member.php';
     include '../inc/lib.php';  //페이지네이션
 
+    $sn = (isset($_GET['sn']) && $_GET['sn'] != '' && is_numeric($_GET['sn'])) ? $_GET['sn'] : '';
+    $sf = (isset($_GET['sf']) && $_GET['sf'] != '' ) ? $_GET['sf'] : '';
+
+    $paramArr = [ 'sn' => $sn, 'sf' => $sf];
     $mem = new Member($db);
 
-    $total = $mem -> total();
+    $total = $mem -> total($paramArr);
     $limit = 5;
     $page_limit = 5;
     $page = (isset($_GET['page']) && $_GET['page'] != '' && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
     $param = '';
-
-    $memArr = $mem -> list($page, $limit);
-
+    $memArr = $mem -> list($page, $limit, $paramArr);
 ?>
 
 <main class="w-90 border rounded-4 p-5 gap-5" style="height:calc(100vh-257px)">
@@ -43,8 +45,8 @@
         <td><?= $row['email']; ?></td>
         <td><?= $row['create_at']; ?></td>
         <td><?= $row['login_dt']; ?></td>
-        <td><button class="btn btn-primary btn-sm">관리</button></td>
-        <td><button class="btn btn-danger btn-sm">삭제</button></td>
+        <td><button class="btn btn-primary btn-sm btn_mem_edit" data-idx="<?= $row['idx']; ?>">관리</button></td>
+        <td><button class="btn btn-danger btn-sm btn_mem_delete" data-idx="<?= $row['idx']; ?>">삭제</button></td>
     </tr>
         <?php }    ?>
 </table>
@@ -55,10 +57,12 @@
             <option value="3">이메일</option>
         </select>
         <input type="text" class="form-control w-25" name="sf" id="sf">
-        <button class="btn btn-primary w-25" id="btn-search">검색</button>
+        <button class="btn btn-primary w-25" id="btn_search">검색</button>
+        <button class="btn btn-success w-25" id="btn_all">전체보기</button>
     </div>
     <div class="d-flex mt-3 justify-content-between align-items-start">
         <?php
+            $param = '&sn='. $sn. '&sf='. $sf; 
             $pagination = my_pagination($total, $limit, $page_limit, $page, $param);
             echo $pagination;
         ?>
