@@ -39,36 +39,30 @@ if ($mode == 'input') {
         "btype" => $board_type,
         "bcode" => $bcode
     ];
-
     $board->create($arr);
-
     $arr = ["result" => "success"];
     die(json_encode($arr)); 
-} else if ($mode == 'delete') {     // 게시판 삭제
-    
-    $board->delete($idx);     //delete는 ../../inc/board.php에서 정의하고 있음
 
+} else if ($mode == 'delete') {     // 게시판 삭제
+    $board->delete($idx);     //delete는 ../../inc/board.php에서 정의하고 있음
     $arr = ["result" => "success"];
     die(json_encode($arr));   
-} else if ($mode == 'edit') {
-  
+
+} else if ($mode == 'edit') {     // 게시판 수정
     if($idx == '') {
         $arr = ["result" => "empty_idx"];
         die(json_encode($arr));       
     }
-
     if($board_title == '') {
         $arr = ["result" => "title_empty"];
         die(json_encode($arr));       
     }
-
     if($board_type == '') {
         $arr = ["result" => "btype_empty"];
         die(json_encode($arr)); 
     }
-
-    // 게시판 수정
-    $arr = [ 
+    
+    $arr = [                      // 게시판 수정
         "name" => $board_title,
         "btype" => $board_type,
         "idx" => $idx

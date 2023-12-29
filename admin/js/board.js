@@ -55,17 +55,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
   
-    // 게시판 생성 버튼 클릭 시 빈칸으로 보이게 하기
+    // 게시판 생성 버튼 클릭 시 입력란 빈칸으로 처리
     btn_create_modal.addEventListener("click", () => {
         board_title.value = ''  //3행에서 정의한 board_title 값 삭제
         const board_mode = document.querySelector("#board_mode")
-        board_mode.value = 'input'
+        board_mode.value = 'input'  //위에서 board_mode 정의해서, 게시판 생성버튼 클릭 시 값을 가져오게 하기 위함
         document.querySelector("#modalTitle").textContent = '게시판 생성'
     })
   
     // 수정버튼 클릭
     const btn_mem_edit = document.querySelectorAll(".btn_mem_edit")
-    btn_mem_edit.forEach((box) => {
+    btn_mem_edit.forEach((box) => {  //전체 게시판을 일일이 짤 수 없어서 foreach문으로 돌림
         box.addEventListener("click", () => {
   
             document.querySelector("#modalTitle").textContent = '게시판 수정'
@@ -73,19 +73,18 @@ document.addEventListener("DOMContentLoaded", () => {
             const board_mode = document.querySelector("#board_mode")
             board_mode.value = 'edit'
     
-            const idx = box.dataset.idx
+            const idx = box.dataset.idx  //각 게시판의 idx 부여
     
             const board_idx = document.querySelector("#board_idx")
             board_idx.value = idx
     
-            const f = new FormData()
+            const f = new FormData()  //수정버튼 클릭 시 해당 게시글의 속성 불러오기
             f.append("idx", idx)
             f.append("mode", "getInfo")
     
-            const xhr = new XMLHttpRequest()
+            const xhr = new XMLHttpRequest()  //속성 조회를 위한 ajax
             xhr.open("post", "./pg/board_process.php", true)
             xhr.send(f)
-    
             xhr.onload = () => {
                 if(xhr.status == 200) {
         
@@ -94,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert('idx 값이 누락되었습니다.')
                     return false
         
-                    } else if(data.result == 'success') {
+                } else if(data.result == 'success') {
                     
                     document.querySelector("#board_title").value = data.list.name
                     document.querySelector("#board_type").value = data.list.btype
@@ -109,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // 해당 게시판으로 이동
     const btn_board_view = document.querySelectorAll(".btn_board_view")
-    btn_board_view.forEach((box) => {
+    btn_board_view.forEach((box) => {  //전체 게시판을 일일이 짤 수 없어서 foreach문으로 돌림
         box.addEventListener("click", () => {
             self.location.href = '../board.php?bcode=' + box.dataset.bcode;
         })
@@ -124,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
     
             const idx = box.dataset.idx
+
             const f = new FormData()
             f.append("idx", idx)
             f.append("mode", "delete")
@@ -131,10 +131,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const xhr = new XMLHttpRequest()
             xhr.open("post", "./pg/board_process.php", true)
             xhr.send(f)
-    
             xhr.onload = () => {
                 if(xhr.status == 200) {
-                    const data = JSON.parse(xhr.responseText) 
+                    const data = JSON.parse(xhr.responseText)  //결과값(result: "empty_idx")을 파싱하여 data에 정의
                     if(data.result == 'success') {
                         self.location.reload()
                     }

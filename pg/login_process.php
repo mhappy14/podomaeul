@@ -1,5 +1,4 @@
 <?php
-
 $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
 $pw = (isset($_POST['pw']) && $_POST['pw'] != '') ? $_POST['pw'] : '';
 
@@ -17,15 +16,15 @@ include '../inc/dbconfig.php';
 include '../inc/member.php';
 
 $mem = new Member($db);
-$getInfo = "getInfo";
 
-if ($mem -> login($id, $pw)) {
+if ($mem->login($id, $pw)) {
     $arr = ['result' => 'login_success'];
-    $memArr = $mem->$getInfo($id);
+    $memArr = $mem->getInfo($id);
     session_start();
     $_SESSION['ses_id'] = $id;
     $_SESSION['ses_level'] = $memArr['level'];
-} else {
+}else {
     $arr = ['result' => 'login_fail'];
 }
 die(json_encode($arr));
+?>

@@ -17,43 +17,36 @@
 ?>
 
 <main class="border rounded-2 p-5" style="height: calc(100vh - 257px)">
-<div class="container">
-    <h3>게시판관리</h3>
-</div>
-<table class="table table-border table-hover">
-    <tr>
-        <th>번호</th>
-        <th>게시판 이름</th>
-        <th>게시판 코드</th>
-        <th>게시판 타입</th>
-        <th>게시물 수</th>
-        <th>등록일시</th>
-        <th>관리</th>
-    </tr>
-    <?php
-foreach($boardArr AS $row) {
-    ?>         
-    <tr>
-        <td><?= $row['idx']; ?></td>
-        <td><?= $row['name' ]; ?></td>
-        <td><?= $row['bcode' ]; ?></td>
-        <td><?= $row['btype']; ?></td>
-        <td><?= $row['cnt']; ?></td>
-        <td><?= $row['create_at']; ?></td>
-        <td>
-            <button class="btn btn-success btn-sm btn_board_view" data-bcode="<?= $row['bcode']; ?>">보기</button>
-            <button class="btn btn-primary btn-sm btn_mem_edit" data-bs-toggle="modal" data-bs-target="#board_create_modal" data-idx="<?= $row['idx']; ?>">수정</button>
-            <button class="btn btn-danger btn-sm btn_mem_delete" data-idx="<?= $row['idx']; ?>">삭제</button>
-        </td>
-    </tr>
-    <?php
-}
-    ?>      
-</table>
-
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#board_create_modal" id="btn_create_modal">게시판 생성</button>
-
-</div>
+    <div class="container">
+        <h3 class="text-center">게시판관리</h3>
+    </div>
+    <table class="table table-border table-hover">
+        <tr>
+            <th class="text-center">번호</th>
+            <th class="text-center">게시판 이름</th>
+            <th class="text-center">게시판 코드</th>
+            <th class="text-center">게시판 타입</th>
+            <th class="text-center">게시물 수</th>
+            <th class="text-center">등록일시</th>
+            <th class="text-center">관리</th>
+        </tr>
+        <?php foreach($boardArr AS $row) { ?>
+        <tr>
+            <td class="text-center"><?= $row['idx']; ?></td>
+            <td class="text-center"><?= $row['name' ]; ?></td>
+            <td class="text-center"><?= $row['bcode' ]; ?></td>
+            <td class="text-center"><?= $row['btype']; ?></td>
+            <td class="text-center"><?= $row['cnt']; ?></td>
+            <td class="text-center"><?= $row['create_at']; ?></td>
+            <td class="text-center">
+                <button class="btn btn-success btn-sm btn_board_view" data-bcode="<?= $row['bcode']; ?>">보기</button>
+                <button class="btn btn-primary btn-sm btn_mem_edit" data-bs-toggle="modal" data-bs-target="#board_create_modal" data-idx="<?= $row['idx']; ?>">수정</button>
+                <button class="btn btn-danger btn-sm btn_mem_delete" data-idx="<?= $row['idx']; ?>">삭제</button>
+            </td>
+        </tr>
+        <?php } ?>
+    </table>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#board_create_modal" id="btn_create_modal">게시판 생성</button>
 </main>
 
 <!-- Modal -->
@@ -62,8 +55,8 @@ foreach($boardArr AS $row) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalTitle">게시판 생성</h1>
-                <input type="hidden" name="mode" id="board_mode" value="">
-                <input type="hidden" name="idx" id="board_idx" value="">
+                <input type="hidden" name="mode" id="board_mode" value="">  <!-- 수정버튼 눌렀을때 값 넣으려고 추가 -->
+                <input type="hidden" name="idx" id="board_idx" value="">  <!-- 수정버튼 눌렀을때 값 넣으려고 추가 -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body d-flex gap-2">

@@ -1,6 +1,5 @@
 <?php
 // 게시판 클래스
-
 class Board {
     private $conn;
 
@@ -12,7 +11,7 @@ class Board {
     // 글등록
     // now() -> 2023-05-2 11:11:11 현재 연월일시분초
     public function input($arr) {
-        $sql = "INSERT INTO board( bcode, id, name, subject, content, files, ip, create_at) VALUES(
+        $sql = "INSERT INTO board(bcode, id, name, subject, content, files, ip, create_at) VALUES(
             :bcode, :id, :name, :subject, :content, :files, :ip, NOW())";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(':bcode'  , $arr['bcode'  ]);
@@ -63,7 +62,7 @@ class Board {
             }
         }
 
-        $sql = "SELECT idx, id, subject, name, hit, comment_cnt, DATE_FORMAT(create_at,'%Y-%m-%d %H:%i') AS create_at 
+        $sql = "SELECT idx, id, name, subject, content, hit, ip, DATE_FORMAT(create_at,'%Y-%m-%d %H:%i') AS create_at 
         FROM board ". $where ."
         ORDER BY idx DESC LIMIT ".$start.",". $limit; 
 
@@ -219,7 +218,6 @@ class Board {
 
         return implode('?', $tmp_arr);
     }
-
 
     public function extract_image($content) {
         preg_match_all("/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i", $content, $matches);
