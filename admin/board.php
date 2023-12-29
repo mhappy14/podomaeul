@@ -1,10 +1,11 @@
 <?php 
-    $js_array = ['js/member.js'];
+    $js_array = ['js/board.js'];
     $menu_code = 'board';
     include 'common.php'; 
     include 'header.php';
     include '../inc/dbconfig.php';
     include '../inc/board.php';
+    include '../inc/boardmanage.php';
     include '../inc/lib.php';
 
     $sn = (isset($_GET['sn']) && $_GET['sn'] != '' && is_numeric($_GET['sn'])) ? $_GET['sn'] : '';
@@ -29,45 +30,30 @@
         <th>등록일시</th>
         <th>관리</th>
     </tr>
-<?php
-  foreach($boardArr AS $row) {
-?>         
+    <?php
+foreach($boardArr AS $row) {
+    ?>         
     <tr>
-      <td><?= $row['idx']; ?></td>
-      <td><?= $row['name' ]; ?></td>
-      <td><?= $row['bcode' ]; ?></td>
-      <td><?= $row['btype']; ?></td>
-      <td><?= $row['cnt']; ?></td>
-      <td><?= $row['create_at']; ?></td>
-      <td>
-      <button class="btn btn-success btn-sm btn_board_view" data-bcode="<?= $row['bcode']; ?>">보기</button>
-
-        <button class="btn btn-primary btn-sm btn_mem_edit" data-bs-toggle="modal" data-bs-target="#board_create_modal" data-idx="<?= $row['idx']; ?>">수정</button>
-        <button class="btn btn-danger btn-sm btn_mem_delete" data-idx="<?= $row['idx']; ?>">삭제</button>
-    </td>
+        <td><?= $row['idx']; ?></td>
+        <td><?= $row['name' ]; ?></td>
+        <td><?= $row['bcode' ]; ?></td>
+        <td><?= $row['btype']; ?></td>
+        <td><?= $row['cnt']; ?></td>
+        <td><?= $row['create_at']; ?></td>
+        <td>
+            <button class="btn btn-success btn-sm btn_board_view" data-bcode="<?= $row['bcode']; ?>">보기</button>
+            <button class="btn btn-primary btn-sm btn_mem_edit" data-bs-toggle="modal" data-bs-target="#board_create_modal" data-idx="<?= $row['idx']; ?>">수정</button>
+            <button class="btn btn-danger btn-sm btn_mem_delete" data-idx="<?= $row['idx']; ?>">삭제</button>
+        </td>
     </tr>
-<?php
-  }
-?>      
-  </table>
-    <div class="container mt-3 d-flex gap-4 w-60">
-        <select class="form-select w-25" name="sn" id="sn">
-            <option value="1">이름</option>
-            <option value="2">아이디</option>
-            <option value="3">이메일</option>
-        </select>
-        <input type="text" class="form-control w-25" name="sf" id="sf">
-        <button class="btn btn-primary w-25" id="btn_search">검색</button>
-        <button class="btn btn-success w-25" id="btn_all">전체보기</button>
-    </div>
-    <div class="d-flex mt-3 justify-content-between align-items-start">
-        <?php
-            $param = '&sn='. $sn. '&sf='. $sf; 
-            $pagination = my_pagination($total, $limit, $page_limit, $page, $param);
-            echo $pagination;
-        ?>
-        <button class="btn btn-primary" id="btn_excel">엑셀로 저장</button>
-    </div>
+    <?php
+}
+    ?>      
+</table>
+
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#board_create_modal" id="btn_create_modal">게시판 생성</button>
+
+</div>
 </main>
 
 <!-- Modal -->
