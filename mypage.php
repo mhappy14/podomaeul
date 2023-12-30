@@ -1,6 +1,7 @@
 <?php 
     session_start();
-    $ses_id = (isset($_SESSION['ses_id']) && $_SESSION['ses_id'] != '') ? $_SESSION['ses_id'] : '';
+    $ses_id    = (isset($_SESSION['ses_id'   ]) && $_SESSION['ses_id'   ] != '' ) ? $_SESSION['ses_id'   ] : '';
+    $ses_level = (isset($_SESSION['ses_level']) && $_SESSION['ses_level'] != '' ) ? $_SESSION['ses_level'] : '';
     if($ses_id == '') {
         echo "
         <script>
@@ -12,13 +13,20 @@
     }
     include 'inc/dbconfig.php';
     include 'inc/member.php';
+    include 'inc/boardmanage.php';
     $mem = new Member($db);
     $memArr = $mem->getInfo($ses_id);
     $title = '회원정보수정';
 
+    $sn = (isset($_GET['sn']) && $_GET['sn'] != '' && is_numeric($_GET['sn'])) ? $_GET['sn'] : '';
+    $sf = (isset($_GET['sf']) && $_GET['sf'] != '' ) ? $_GET['sf'] : '';
+
+    $paramArr = [ 'sn' => $sn, 'sf' => $sf];
+    $board = new BoardManage($db);
+    $boardArr = $board->list();
+
     $js_array = ['js/mypage.js'];
     include 'inc/header.php';
-    $js_array = ['js/member_input.js'];
 ?>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 

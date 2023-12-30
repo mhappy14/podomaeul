@@ -34,10 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       
         const markupStr = $('#summernote').summernote('code')
-        if(markupStr == '<p><br></p>') {
-            alert('내용을 입력하세요.')
-            return false
-        }
   
         // 파일 첨부
         const id_attach = document.querySelector("#id_attach")
@@ -78,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const xhr = new XMLHttpRequest()
         xhr.open("post", "./pg/board_process.php", true)
         xhr.send(f)
-  
         xhr.onload = () => {
             if(xhr.status == 200) {
                 const data = JSON.parse(xhr.responseText)

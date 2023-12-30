@@ -4,7 +4,6 @@
     include 'common.php'; 
     include 'header.php';
     include '../inc/dbconfig.php';
-    include '../inc/board.php';
     include '../inc/boardmanage.php';
     include '../inc/lib.php';
 

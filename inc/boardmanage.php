@@ -96,5 +96,4 @@ class BoardManage {
         $stmt->execute();
         return $stmt->fetch(); 
     }
-
 }

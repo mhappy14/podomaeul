@@ -1,5 +1,4 @@
 <?php 
-
 if(isset($_SERVER['CONTENT_LENGTH']) && $_SERVER['CONTENT_LENGTH'] >  (int) ini_get('post_max_size') * 1024 * 1024) {
 
     $arr = ['result' => 'post_size_exceed'];
