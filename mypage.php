@@ -17,6 +17,7 @@
     $mem = new Member($db);
     $memArr = $mem->getInfo($ses_id);
     $title = '회원정보수정';
+    $menu_code = 'mypage';
 
     $sn = (isset($_GET['sn']) && $_GET['sn'] != '' && is_numeric($_GET['sn'])) ? $_GET['sn'] : '';
     $sf = (isset($_GET['sf']) && $_GET['sf'] != '' ) ? $_GET['sf'] : '';

@@ -22,42 +22,55 @@
 </head>
 <body>
   <div class="container">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <img src="../images/logo.svg" class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-        <span class="fs-4">포도마을</span>
-      </a>
+    <header>
+      <div class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <img src="../images/logo.svg" class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+          <span class="fs-4">포도마을</span>
+        </a>
 
-      <ul class="nav nav-pills gap-3">
-        <?php if(isset($ses_id) && $ses_id != '') {
-          //로그인 상태
-        ?>
-        <li class="nav-item"><a href="index.php" class="nav-link <?= ($menu_code == 'home') ? 'active': ''; ?>">Home</a></li>
-        <li class="nav-item"><a href="intro.php" class="nav-link <?= ($menu_code == 'intro') ? 'active': ''; ?>">소개</a></li>
-        <?php if($ses_level == 10) {
-        ?>  
-        <li class="nav-item"><a href="../admin/" class="nav-link <?= ($menu_code == 'member') ? 'active': ''; ?>">Admin</a></li>
-        <?php
-        } else { ?>
-
-        <li class="nav-item"><a href="../mypage.php" class="nav-link <?= ($menu_code == 'member') ? 'active': ''; ?>">My Page</a></li>
-
-        <?php } ?>
-
-        <?php
-            foreach($boardArr AS $row) {
+        <ul class="nav nav-pills gap-3">
+          <?php if(isset($ses_id) && $ses_id != '') {
+            //로그인 상태
+          ?>
+          <li class="nav-item"><a href="index.php" class="nav-link <?= ($menu_code == 'home') ? 'active': ''; ?>">Home</a></li>
+          <li class="nav-item"><a href="intro.php" class="nav-link <?= ($menu_code == 'intro') ? 'active': ''; ?>">소개</a></li>
+          <?php if($ses_level == 10) {
+          ?>  
+          <li class="nav-item"><a href="../admin/" class="nav-link <?= ($menu_code == 'member') ? 'active': ''; ?>">Admin</a></li>
+          <?php
+          } else { ?>
+          <li class="nav-item"><a href="board.php" class="nav-link <?= ($menu_code == 'board') ? 'active': ''; ?>">게시판</a></li>
+          <li class="nav-item"><a href="../mypage.php" class="nav-link <?= ($menu_code == 'mypage') ? 'active': ''; ?>">My Page</a></li>
+          <?php } ?>
+          <li class="nav-item"><a href="./pg/logout.php" class="nav-link <?= ($menu_code == 'login') ? 'active': ''; ?>">로그아웃</a></li>
+        </ul>
+      </div>
+      <?php
+        if($menu_code == 'board' && $bcode == '') {
+          echo '<div class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"><ul class="nav nav-pills gap-3">';
+          foreach($boardArr AS $row) {
               echo '<li class="nav-item"><a href="board.php?bcode='.$row['bcode'].'" class="nav-link';
               if(isset($_GET['bcode']) && $_GET['bcode'] == $row['bcode']) {
-                echo ' active';
+                  echo ' active';
               }
               echo '">'.$row['name'].'</a></li>';
-            }
-        ?>
-
-        
-
-
-        <li class="nav-item"><a href="./pg/logout.php" class="nav-link <?= ($menu_code == 'login') ? 'active': ''; ?>">로그아웃</a></li>
+          }
+          echo '</ul></div>';
+        }
+        if($menu_code == 'board' && $bcode != '') {
+          echo '<div class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"><ul class="nav nav-pills gap-3">';
+          foreach($boardArr AS $row) {
+              echo '<li class="nav-item"><a href="board.php?bcode='.$row['bcode'].'" class="nav-link';
+              if(isset($_GET['bcode']) && $_GET['bcode'] == $row['bcode']) {
+                  echo ' active';
+              }
+              echo '">'.$row['name'].'</a></li>';
+          }
+          echo '</ul></div>';
+        }
+      ?>
+    </header>
 <?php
 } else {
   // 로그인 안된 상태
@@ -67,8 +80,8 @@
         <li class="nav-item"><a href="stipulation.php" class="nav-link <?= ($menu_code == 'stipulation') ? 'active': ''; ?>">회원가입</a></li>
         <li class="nav-item"><a href="board.php" class="nav-link <?= ($menu_code == 'board') ? 'active': ''; ?>">게시판</a></li>
         <li class="nav-item"><a href="login.php" class="nav-link <?= ($menu_code == 'login') ? 'active': ''; ?>">로그인</a></li>
+      </ul>
+    </header>
 <?php
 }
 ?>
-      </ul>
-    </header>
