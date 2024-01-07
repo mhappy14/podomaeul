@@ -61,8 +61,9 @@
             <div class="modal-body d-flex gap-2">
                 <input type="text" id="board_title" class="form-control" placeholder="게시판 이름">
                 <select name="" id="board_type" class="form-select">
-                <option value="board">게시판</option>
-                <option value="gallery">갤러리</option>
+                    <option value="board">조경기술사 이론</option>
+                    <option value="gallery">조경기술사 기출</option>
+                    <option value="essay">조경 에쎄이</option>
                 </select>
             </div>
             <div class="modal-footer">

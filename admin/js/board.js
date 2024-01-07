@@ -102,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert('통신실패 :' + xhr.status)
                 }
             }
-        
         })
     })
   

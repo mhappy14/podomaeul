@@ -19,7 +19,8 @@
             <input type="password" class="form-control" id="f_pw" placeholder="비밀번호 입력">
             <label for="f_pw">비밀번호</label>
         </div>
-        <button class="w-100 mt-3 btn btn-lg btn-primary" id="btn_login" type="button">확인</button>
+        <div class="py-4 h6"><a href="stipulation.php">회원이 아니신가요?</a></div>
+        <button class="w-100 mt-1 btn btn-lg btn-primary" id="btn_login" type="button">확인</button>
 </form>
 
 </main>
