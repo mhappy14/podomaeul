@@ -60,20 +60,9 @@
 ?>
   <?php
     if($menu_code == 'board' && $bcode == '') {
-      echo '<div class="d-flex flex-wrap justify-content-center py-2 mb-4 border-bottom"><ul class="nav nav-pills gap-3">';
+      echo '<div class="py-1 mb-4 border-bottom"><ul class="nav">';
       foreach($boardArr AS $row) {
-          echo '<li"><a href="board.php?bcode='.$row['bcode'].'" class="nav-link';
-          if(isset($_GET['bcode']) && $_GET['bcode'] == $row['bcode']) {
-              echo ' fw-bold';
-          }
-          echo '">'.$row['name'].'</a></li>';
-      }
-      echo '</ul></div>';
-    }
-    if($menu_code == 'board' && $bcode != '') {
-      echo '<div class="d-flex flex-wrap justify-content-center py-2 mb-4 border-bottom"><ul class="nav nav-pills gap-3">';
-      foreach($boardArr AS $row) {
-          echo '<li><a href="board.php?bcode='.$row['bcode'].'" class="nav-link';
+          echo '<li class="d-flex flex-wrap nav-pills gap-3 justify-content-center"><a href="board.php?bcode='.$row['bcode'].'" class="nav-link';
           if(isset($_GET['bcode']) && $_GET['bcode'] == $row['bcode']) {
               echo ' fw-bold';
           }
