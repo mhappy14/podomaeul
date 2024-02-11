@@ -1,6 +1,6 @@
 <?php
 
-include '../inc_common.php';
+include '../../inc/common.php';
 include '../../inc/dbconfig.php';
 include '../../inc/boardmanage.php'; // 게시판 관리 class
 

@@ -16,35 +16,6 @@ include 'inc/header.php';
 
 ?>
 
-<script>
-  function setCookie(name, value, exp) {
-    let data = new Date()
-    data.setTime(data.getTime() + exp * 24 * 60 * 60 * 1000)
-    document.cookie = name + '=' + value + ';expires=' + data.toUTCString() + ';path=/';
-  } 
-
-  const closes = document.querySelectorAll(".close")
-  closes.forEach((box) => {
-    box.addEventListener("click", () => {
-      box.parentNode.parentNode.style.display = 'none'
-    })
-  })
-
-  const chk_closes = document.querySelectorAll('.chk_close')
-  chk_closes.forEach((box) => {
-    box.addEventListener("click", () => {
-      let term = 0
-      switch(box.value) {
-        case 'day' : term = 1; break;
-        case 'week' : term = 7; break;
-        case 'month' : term = 30; break;
-      }
-      setCookie('pop' + box.dataset.idx, '1', term)
-      box.parentNode.parentNode.style.display = 'none'
-    })
-  })
-</script>
-
 <main class="w-90 mx-auto border rounded-5 p-5 d-flex gap-5" style="height:calc(100vh-257px)">
 <div class="w-5">
     <img src="images/logo.svg" width=100px alt="">
