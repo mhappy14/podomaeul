@@ -57,8 +57,8 @@ include_once 'inc/header.php';
             <span class="h3 fw-bolder"><?= $boardRow['name']; ?></span>
         </div>
         <div class="d-flex border border-top-0 border-start-0 border-end-0 border-bottom-1">
-            <span><?= $boardRow['name']; ?></span>
-            <span class="ms-5 me-auto"><?= $boardRow['hit']; ?>회</span>
+            <span><b>글쓴이 </b><?= $boardRow['name']; ?></span>
+            <span class="ms-5 me-auto"><b>조회수 </b><?= $boardRow['hit']; ?>회</span>
             <span><?= $boardRow['create_at']; ?></span>
         </div>
         <div class="p-3">

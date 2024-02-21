@@ -17,7 +17,7 @@ $board_name = $boardm->getBoardName($bcode);
 
 $board = new Board($db); // 게시판 클래스
 $menu_code = 'law';
-$js_array = [ 'js/law.js'];
+$js_array = [ 'js/board.js'];
 $g_title = $board_name;
 
 $paramArr = ['sn' => $sn, 'sf' => $sf];

@@ -69,15 +69,9 @@
 ?>
   <?php
     if($menu_code == 'board') {
-      echo '<div class="py-1 mb-4 border-bottom"><ul class="nav"><li><a class="nav-link fw-bold text-danger">과목</a></li>';
-      foreach($boardArr AS $row) {
-          echo '<li class="d-flex flex-wrap nav-pills gap-3 justify-content-center"><a href="board.php?bcode='.$row['bcode'].'" class="nav-link';
-          if(isset($_GET['bcode']) && $_GET['bcode'] == $row['bcode']) {
-              echo ' fw-bold';
-          }
-          echo '">'.$row['name'].'</a></li>';
-      }
-      echo '</ul></div>';
+      include 'header/header_board.php';
+    } else if($menu_code == 'law') {
+      include 'header/header_law.php';
     }
   ?>
 </header>

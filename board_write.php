@@ -15,6 +15,7 @@ $boardm = new BoardManage($db);
 $boardArr = $boardm->list();
 $board_name = $boardm->getBoardName($bcode);
 $board = new Board($db);
+$menu_code = 'board';
 $js_array = [ 'js/board_write.js'];
 $g_title = '게시판';
 include_once 'inc/header.php';

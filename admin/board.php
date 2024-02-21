@@ -61,8 +61,9 @@
             <div class="modal-body d-flex gap-2">
                 <input type="text" id="board_title" class="form-control" placeholder="게시판 이름">
                 <select name="" id="board_type" class="form-select">
-                    <option value="이론">이론</option>
-                    <option value="기출">기출</option>
+                    <option value="theory">theory</option>
+                    <option value="question">question</option>
+                    <option value="law_construction">law_construction</option>
                 </select>
             </div>
             <div class="modal-footer">
