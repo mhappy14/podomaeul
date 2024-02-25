@@ -3,10 +3,8 @@ include 'inc/common.php'; // 세션
 include 'inc/dbconfig.php';
 include 'inc/board.php'; // 게시판 클래스
 include 'inc/lib.php'; // 페이지네이션
-include 'inc/comment.php'; // 댓글 클래스
 
 $bcode = (isset($_GET['bcode']) && $_GET['bcode'] != '') ? $_GET['bcode'] : '';
-$idx = (isset($_GET['idx']) && $_GET['idx'] != '' && is_numeric($_GET['idx'])) ? $_GET['idx'] : '';
 $page  = (isset($_GET['page' ]) && $_GET['page' ] != '' && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
 $sn    = (isset($_GET['sn'   ]) && $_GET['sn'   ] != '') ? $_GET['sn'   ] : '';
 $sf    = (isset($_GET['sf'   ]) && $_GET['sf'   ] != '') ? $_GET['sf'   ] : '';
@@ -21,21 +19,6 @@ $board = new Board($db); // 게시판 클래스
 $menu_code = 'law';
 $js_array = [ 'js/law.js'];
 $g_title = $board_name;
-
-$boardRow = $board->view($idx);
-
-// 댓글 목록
-$comment = new Comment($db);
-$commentRs = $comment->list($idx);
-
-// $_SERVER['REMOTE_ADDR'] : 지금 접속한 사람의 IP정보를 담고 있음.
-if($boardRow['last_reader'] != $_SERVER['REMOTE_ADDR'])  {
-    $board->hitInc($idx);
-    $board->updateLastReader($idx, $_SERVER['REMOTE_ADDR']);
-}
-
-// 다운로드 횟수 저장 배열
-$downhit_arr = explode('?', $boardRow['downhit']);
 
 $paramArr = ['sn' => $sn, 'sf' => $sf];
 

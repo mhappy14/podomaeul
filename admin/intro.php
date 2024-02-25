@@ -1,6 +1,6 @@
 <?php 
     $js_array = ['js/home.js'];
-    $menu_code = 'home';
+    $menu_code = 'intro';
     include 'common.php'; 
     include '../inc/header.php';
 ?>

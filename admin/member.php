@@ -69,4 +69,4 @@
         <button class="btn btn-primary" id="btn_excel">엑셀로 저장</button>
     </div>
 </main>
-<?php include 'footer.php'; ?>
+<?php include '../inc/footer.php'; ?>
