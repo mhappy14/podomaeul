@@ -9,4 +9,5 @@ echo '<div class="py-1 mb-4 border-bottom"><ul class="nav">';
             echo '">'.$row['name'].'</a></li>';
         }
     }
+echo '</ul></div>';
 ?>

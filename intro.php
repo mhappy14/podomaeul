@@ -51,7 +51,7 @@ include 'inc/header.php';
     <h3 class="text-center">앞으로 제가 유익한 정보를 제공하는 웹사이트를 제작할 예정입니다.<br><br></h3>
     <h2 class="text-center">포도마을이 여러분의 앞날에 도움이 되도록 노력하겠습니다.<br><br></h2>
     <h2 class="text-center">많은 관심과 응원 바랍니다.<br><br></h2>
-</div>
+</div>   
 
 </main>
 <?php include 'inc/footer.php'; ?>

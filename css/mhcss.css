@@ -23,8 +23,19 @@
 .license:hover .dropdownlicense {
     display: block;
 }
+
+.footer {
+    position: relative;
+    transform: translateY(0%);
+    left: 0px;
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
+    background-image: linear-gradient(to right, rgb(36, 2, 55),rgb(103, 20, 148),rgb(36, 2, 55));
+}
   
 .minitext {
     color: rgb(255, 255, 255);
-    font-size: 12px;
+    font-size: 10px;
+    margin: 4px 10px;
 }

@@ -41,13 +41,13 @@
           <?php
           } else { ?>
           <li class="license">
-            <a href="board.php" class="license nav-link text-black-50 fs-6 <?= ($menu_code == 'board') ? 'fw-bold': ''; ?>">자격증</a>
+            <a href="board.php?bcode=scshzi" class="license nav-link text-black-50 fs-6 <?= ($menu_code == 'board') ? 'fw-bold': ''; ?>">자격증</a>
             <div class="dropdownlicense">
-              <a href="board.php">조경기술사</a>
+              <a href="board.php?bcode=scshzi">조경기술사</a>
               <a href="#">자연환경관리기술사</a>
             </div>
           </li>
-          <li><a href="law.php" class="nav-link text-black-50 fs-6 <?= ($menu_code == 'law') ? 'fw-bold': ''; ?>">법·규정</a></li>
+          <li><a href="law.php?bcode=ktvpxd" class="nav-link text-black-50 fs-6 <?= ($menu_code == 'law') ? 'fw-bold': ''; ?>">법·규정</a></li>
           <li><a href="../mypage.php" class="nav-link text-black-50 fs-6 <?= ($menu_code == 'mypage') ? 'fw-bold': ''; ?>">My Page</a></li>
           <?php } ?>
           <li><a href="./pg/logout.php" class="nav-link text-black-50 fs-6 <?= ($menu_code == 'login') ? 'fw-bold': ''; ?>">로그아웃</a></li>
@@ -59,8 +59,14 @@
 ?>
         <li class="nav-item"><a href="index.php" class="nav-link <?= ($menu_code == 'home') ? 'fw-bold': ''; ?>">Home</a></li>
         <li class="nav-item"><a href="intro.php" class="nav-link <?= ($menu_code == 'intro') ? 'fw-bold': ''; ?>">소개</a></li>
-        <li class="nav-item"><a href="board.php" class="nav-link <?= ($menu_code == 'board') ? 'fw-bold': ''; ?>">자격증</a></li>
-        <li class="nav-item"><a href="law.php" class="nav-link <?= ($menu_code == 'law') ? 'fw-bold': ''; ?>">법·규정</a></li>
+        <li class="license">
+          <a href="board.php?bcode=scshzi" class="license nav-link fs-6 <?= ($menu_code == 'board') ? 'fw-bold': ''; ?>">자격증</a>
+          <div class="dropdownlicense">
+            <a href="board.php?bcode=scshzi">조경기술사</a>
+            <a href="#">자연환경관리기술사</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="law.php?bcode=ktvpxd" class="nav-link <?= ($menu_code == 'law') ? 'fw-bold': ''; ?>">법·규정</a></li>
         <li class="nav-item"><a href="login.php" class="nav-link <?= ($menu_code == 'login') ? 'fw-bold': ''; ?>">로그인</a></li>
       </ul>
     </header>
