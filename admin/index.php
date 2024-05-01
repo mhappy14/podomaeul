@@ -2,7 +2,7 @@
     $js_array = ['js/home.js'];
     $menu_code = 'home';
     include 'common.php'; 
-    include '../inc/header.php';
+    include 'header.php';
 ?>
 
 <main class="w-90 mx-auto border rounded-5 p-5 d-flex gap-5" style="height:calc(100vh-257px)">

@@ -14,7 +14,6 @@ class Member {
         $stmt = $this -> conn ->prepare($sql);
         $stmt -> bindParam(':id',$id);
         $stmt->execute();
-
         return $stmt->rowCount() ? true : false;
     }
 

@@ -7,6 +7,9 @@ include 'inc/lib.php'; // 페이지네이션
 
 $bcode = (isset($_GET['bcode']) && $_GET['bcode'] != '') ? $_GET['bcode'] : '';
 $idx = (isset($_GET['idx']) && $_GET['idx'] != '' && is_numeric($_GET['idx'])) ? $_GET['idx'] : '';
+$page  = (isset($_GET['page' ]) && $_GET['page' ] != '' && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
+$sn    = (isset($_GET['sn'   ]) && $_GET['sn'   ] != '') ? $_GET['sn'   ] : '';
+$sf    = (isset($_GET['sf'   ]) && $_GET['sf'   ] != '') ? $_GET['sf'   ] : '';
  
 if($bcode == '') {
     die('<script>alert("게시판 코드가 빠졌습니다.");history.go(-1);</script>');
@@ -24,10 +27,18 @@ $board_name = $boardm->getBoardName($bcode);
 
 $board = new Board($db); // 게시판 클래스
 $menu_code = 'law';
-$js_array = [ 'js/board_view.js'];
+$js_array = [ 'js/law_view.js'];
 $g_title = $board_name;
 
 $boardRow = $board->view($idx);
+
+$paramArr = ['sn' => $sn, 'sf' => $sf];
+
+$total = $board->total($bcode, $paramArr);
+
+$limit = 10;
+$page_limit = 5;
+$boardRs = $board->list($bcode, $page, $limit, $paramArr);
 
 if($boardRow == null)  {
     die('<script>alert("존재하지 않는 게시물입니다.");history.go(-1);</script>');
@@ -51,8 +62,7 @@ include_once 'inc/header.php';
 ?>
 
 <main class="w-100 mx-auto border rounded-2 p-5">
-    <h1 class="text-center"><?= $board_name; ?></h1>
-    <div class="vstack w-75 mx-auto">
+    <div class="vstack w-100 mx-auto">
         <div class="p-3">
             <span class="h3 fw-bolder"><?= $boardRow['name']; ?></span>
         </div>
@@ -116,6 +126,64 @@ include_once 'inc/header.php';
                     <?php } ?>
             </table>
         </div>
+    </div>
+</main>
+
+<style>
+    .tr { cursor: pointer; }
+</style>
+
+<main class="w-100 mx-auto border rounded-2 p-5 mt-2">
+    <h3 class="text-center"><?= $board_name; ?></h3>
+    <table class="table striped table-hover mt-5">  <!-- 글목록 -->
+        <colgroup>
+            <col width="10%">
+            <col width="45%">
+            <col width="10%">
+            <col width="15%">
+            <col width="10%">
+        </colgroup>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>이름</th>
+            <th>날짜</th>
+            <th>조회 수</th>
+        </tr>
+        <?php
+        $cnt = 0;
+        $ntotal = $total - ($page - 1) * $limit;
+        foreach($boardRs AS $boardRow){
+            $number = $ntotal - $cnt;
+            $cnt++;
+        ?>    
+            <tr class="tr" data-idx="<?= $boardRow['idx']; ?>">
+                <td><?= $number; ?></td>
+                <td>
+                    <?php echo $boardRow['subject'];
+
+                    if($boardRow['comment_cnt'] > 0) {
+                        echo ' <span class="badge bg-secondary">'.$boardRow['comment_cnt'].'</span>';  
+                    } 
+                    ?>
+                </td>
+                <td><?= $boardRow['name'     ]; ?></td>
+                <td><?= $boardRow['create_at']; ?></td>
+                <td><?= $boardRow['hit'      ]; ?></td>
+            </tr>
+        <?php 
+        }
+        ?>    
+    </table>
+
+    <div class="d-flex justify-content-center">
+        <?php
+            $param = '&bcode=' . $bcode;
+            if(isset($sn) && $sn != '' && isset($sf) && $sf != '') {
+                $param .= '&sn='. $sn. '&sf='. $sf;
+            }
+            echo my_pagination($total, $limit, $page_limit, $page, $param); 
+        ?>
     </div>
 </main>
 <?php include_once 'inc/footer.php'; ?>

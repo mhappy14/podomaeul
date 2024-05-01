@@ -10,8 +10,7 @@ class BoardManage {
 
     // 게시판목록
     public function list() {
-        
-        $sql = "SELECT idx, name, bcode, btype, cnt, 
+        $sql = "SELECT idx, name, bcode, btype, dept, lev, cnt, 
                        DATE_FORMAT(create_at,'%Y-%m-%d %H:%i') AS create_at 
                 FROM board_manage 
                 ORDER BY idx ASC ";

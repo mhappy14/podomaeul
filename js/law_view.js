@@ -142,4 +142,13 @@ document.addEventListener("DOMContentLoaded", () => {
             btn_comment.textContent = '수정'
         })
     })
+  
+    // 글보기
+    const trs = document.querySelectorAll(".tr")
+    trs.forEach((box) => {
+        box.addEventListener("click", () => {
+            self.location.href='./law_view.php?bcode=' + params["bcode"] + '&idx=' + box.dataset.idx
+        })
+    })
 })
+

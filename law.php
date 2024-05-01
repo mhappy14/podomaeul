@@ -12,7 +12,7 @@ $sn    = (isset($_GET['sn'   ]) && $_GET['sn'   ] != '') ? $_GET['sn'   ] : '';
 $sf    = (isset($_GET['sf'   ]) && $_GET['sf'   ] != '') ? $_GET['sf'   ] : '';
 
 // 게시판 목록
-include 'inc/boardmanage.php';
+include 'inc/boardmanage.php'; 
 $boardm = new BoardManage($db);
 $boardArr = $boardm->list();
 $board_name = $boardm->getBoardName($bcode);
@@ -23,19 +23,6 @@ $js_array = [ 'js/law.js'];
 $g_title = $board_name;
 
 $boardRow = $board->view($idx);
-
-// 댓글 목록
-$comment = new Comment($db);
-$commentRs = $comment->list($idx);
-
-// $_SERVER['REMOTE_ADDR'] : 지금 접속한 사람의 IP정보를 담고 있음.
-if($boardRow['last_reader'] != $_SERVER['REMOTE_ADDR'])  {
-    $board->hitInc($idx);
-    $board->updateLastReader($idx, $_SERVER['REMOTE_ADDR']);
-}
-
-// 다운로드 횟수 저장 배열
-$downhit_arr = explode('?', $boardRow['downhit']);
 
 $paramArr = ['sn' => $sn, 'sf' => $sf];
 
@@ -54,7 +41,7 @@ include_once 'inc/header.php';
 
 <main class="w-100 mx-auto border rounded-2 p-5">
     <h1 class="text-center"><?= $board_name; ?></h1>
-    <table class="table striped table-hover mt-5">
+    <table class="table striped table-hover mt-5">  <!-- 글목록 -->
         <colgroup>
             <col width="10%">
             <col width="45%">

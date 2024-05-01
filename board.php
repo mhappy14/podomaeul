@@ -63,9 +63,11 @@ include_once 'inc/header.php';
                 <td><?= $number; ?></td>
                 <td>
                     <?php echo $boardRow['subject'];
-
                     if($boardRow['comment_cnt'] > 0) {
-                        echo ' <span class="badge bg-secondary">'.$boardRow['comment_cnt'].'</span>';  
+                        echo ' <span class="badge bg-secondary">'."R".$boardRow['comment_cnt'].'</span>';  
+                    } 
+                    if($boardRow['like_cnt'] > 0) {
+                        echo ' <span class="badge bg-secondary">'."♡".$boardRow['like_cnt'].'</span>';  
                     } 
                     ?>
                 </td>

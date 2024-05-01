@@ -27,7 +27,7 @@
       <div class="d-flex flex-wrap justify-content-center py-2 mb-2 border-bottom">
         <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
           <img src="../images/logo.svg" class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-          <span class="fs-6">포도마을</span>
+          <span class="fs-6">포도을</span>
         </a>
         <ul class="nav nav-pills gap-3">
           <?php if(isset($ses_id) && $ses_id != '') {

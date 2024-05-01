@@ -15,7 +15,7 @@
     $boardArr = $board->list();
 ?>
 
-<main class="border rounded-2 p-5" style="height: calc(100vh - 257px)">
+<main class="border rounded-2 p-5">
     <div class="container">
         <h3 class="text-center">게시판관리</h3>
     </div>
@@ -25,6 +25,8 @@
             <th class="text-center">게시판 이름</th>
             <th class="text-center">게시판 코드</th>
             <th class="text-center">게시판 타입</th>
+            <th class="text-center">분야</th>
+            <th class="text-center">등급</th>
             <th class="text-center">게시물 수</th>
             <th class="text-center">등록일시</th>
             <th class="text-center">관리</th>
@@ -35,6 +37,8 @@
             <td class="text-center"><?= $row['name' ]; ?></td>
             <td class="text-center"><?= $row['bcode' ]; ?></td>
             <td class="text-center"><?= $row['btype']; ?></td>
+            <td class="text-center"><?= $row['dept' ]; ?></td>
+            <td class="text-center"><?= $row['lev']; ?></td>
             <td class="text-center"><?= $row['cnt']; ?></td>
             <td class="text-center"><?= $row['create_at']; ?></td>
             <td class="text-center">
