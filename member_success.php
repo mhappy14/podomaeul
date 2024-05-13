@@ -1,5 +1,6 @@
 <?php
     $js_array = ['js/member_success.js'];
+    $menu_code = 'stipulation';
     include 'inc/header.php'
 ?>
 

@@ -11,7 +11,6 @@ echo '<li><a class="nav-link fw-bold text-danger">기출</a></li>';
         }
     }
     $boardArr = $boardm->list();
-    print_r($boardArr);
 echo '<li><a class="nav-link fw-bold text-danger">과목</a></li>';
     foreach($boardArr AS $row) {
         if(isset($row['btype']) && $row['btype'] == 'theory') {
